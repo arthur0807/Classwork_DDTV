@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="arthur.tv">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".MainActivity"
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".PlayerInterface" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".CCTV4"
+            android:label="CCTV4"
+            android:launchMode="singleTask" />
+
+        <activity
+            android:name=".CHC_HD"
+            android:label="CHC"
+            android:launchMode="singleTask" />
+
+        <activity
+            android:name=".CCTV1"
+            android:label="CCTV1"
+            android:launchMode="singleTask" />
+
+        <activity android:name=".CCTV5"
+            android:label="CCTV5"
+            android:launchMode="singleTask"
+            />
+    </application>
+
+</manifest>
