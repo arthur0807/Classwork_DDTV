@@ -1,21 +1,28 @@
 package arthur.tv;
 
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.Toast;
+
+import com.google.android.material.bottomappbar.BottomAppBar;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView movieList;
     private MovieListAdapter movieAdapter;
     private List<movieDataList> data;
+    FloatingActionButton floatingActionButton;
+    BottomAppBar bottomAppBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,9 +43,22 @@ public class MainActivity extends AppCompatActivity {
         movieList.setLayoutManager(new LinearLayoutManager(this));
         movieList.setAdapter(movieAdapter);
         movieList.addItemDecoration(new DividerItemDecoration(this,LinearLayoutManager.VERTICAL));
+        floatingActionButton = findViewById(R.id.fab);
+        bottomAppBar = findViewById(R.id.bottomAppBar);
+        setSupportActionBar(bottomAppBar);
+
+        Log.e("test",String.valueOf(getTitle()));
+
+        floatingActionButton.setOnClickListener(v -> Toast.makeText(MainActivity.this,"174020300康乔",Toast.LENGTH_LONG).show());
     }
     private void initData() {
         MovieLab lab = new MovieLab(this);
         this.data = lab.getChannels("data.json");
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.bottom_app_bar,menu);
+        return true;
     }
 }

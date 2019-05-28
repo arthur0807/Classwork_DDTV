@@ -2,8 +2,8 @@ package arthur.tv;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -68,11 +68,15 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
         private TextView title;
         private TextView quality;
         private ImageView logo;
+        private TextView introduction;
+        private ImageView suoluetu;
         public MovieViewHolder(View itemView){
             super(itemView);
-            title = itemView.findViewById(R.id.title);
-            quality = itemView.findViewById(R.id.quality);
-            logo = itemView.findViewById(R.id.image);
+            title = itemView.findViewById(R.id.Title);
+            quality = itemView.findViewById(R.id.Quality);
+            logo = itemView.findViewById(R.id.Image);
+            introduction = itemView.findViewById(R.id.introduction);
+            suoluetu = itemView.findViewById(R.id.suoluetu);
         }
         /**
          * 把传入的值显示在对应的控件上
@@ -101,20 +105,17 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     @NonNull
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-////        实例化展示的View,找到电影行中对应的xml，并将其反向解析出来（inflate）
-//        View container = LayoutInflater.from(parent.getContext()).inflate(
-//                R.layout.movie_view,parent,false);
-////            返回实例化的MovieViewHolder
-//        return new MovieViewHolder(container);
+//     实例化展示的View,找到电影行中对应的xml，并将其反向解析出来（inflate）
         context = parent.getContext();
-        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.channel,parent,false);
+        View row = LayoutInflater.from(parent.getContext()).inflate(R.layout.test_1,parent,false);
         final MovieViewHolder holder = new MovieViewHolder(row);
         row.setOnClickListener(v -> listener.onClick(v,holder.getLayoutPosition()));
+//    返回实例化的MovieViewHolder
         return holder;
     }
 
     /**
-     * 填充每一行的内容，暂时硬编码，让每一行的内容都一样
+     * 填充每一行的内容，
      * 给ViewHolder的控件设置数据
      * @param holder
      * @param position
@@ -122,25 +123,10 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, int position) {
         holder.bind(context,mList.get(position));
-
-//        holder.movieName.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(final View v) {
-//                int pos = holder.getLayoutPosition();
-//                itemClickListener.onItemClick(holder.movieName,pos);
-//            }
-//        });
-
-
-////        绑定数据
-//        holder.movieName.setText(MovieLab.get().getMovie(position));
-//
-
-
     }
 
     /**
-     * 表示行数，暂时硬编码为5行
+     * 表示行数，根据JSON文件中的length显示几行
      * @return
      */
     @Override

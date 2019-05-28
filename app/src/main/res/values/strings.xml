@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">TV</string>
+    <string name="TV_title">CCTV1-综合</string>
+    <string name="TV_quality">高清</string>
+    <string name="introduction">中国中央电视台是中华人民共和国的国家电视台、国家副部级事业单位，成立于1958年5月1日。是中国的新闻舆论机构和思想文化阵地，具有传播新闻、社会教育、文化娱乐、信息服务等多种功能。</string>
 </resources>
